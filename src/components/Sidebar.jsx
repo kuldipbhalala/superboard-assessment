@@ -6,9 +6,8 @@ const Sidebar = ({ isSidebarOpen, handleToggleSidebar }) => {
     return (
         <>
             {/* ======= Sidebar Menu ======= */}
-            {isSidebarOpen && (
-                <section className='fixed md:static inset-0 z-50 md:z-auto'>
-                    <div className='w-full md:w-[240px] h-screen bg-[#F4F4F5] py-8 px-5 flex flex-col justify-between'>
+            <section className={`fixed md:static inset-0 z-50 md:z-auto ${!isSidebarOpen ? 'hidden md:block' : 'block'}`}>
+                <div className='w-full md:w-[240px] h-screen bg-[#F4F4F5] py-8 px-5 flex flex-col justify-between'>
                         <div className=''>
                             <div className='flex justify-between items-center'>
                                 <div className='relative w-fit'>
@@ -74,7 +73,6 @@ const Sidebar = ({ isSidebarOpen, handleToggleSidebar }) => {
                         </div>
                     </div>
                 </section>
-            )}
         </>
     )
 }
