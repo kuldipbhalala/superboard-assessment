@@ -1,7 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Sidebar from './Sidebar.jsx'
+import { IoMenu } from "react-icons/io5";
+import { IoClose } from "react-icons/io5";
 
 const Home = () => {
+    const [isSidebarOpen, setIsSidebarOpen] = useState(false)
+
+    const handleToggleSidebar = () => {
+        setIsSidebarOpen(!isSidebarOpen)
+    }
+
     const campaignData = [
         {
             id: 1,
@@ -105,7 +113,10 @@ const Home = () => {
                 {/* ======= Left Sidebar Wrapper ======= */}
 
                 <div className='md:w-[240px] md:flex-shrink-0'>
-                    <Sidebar />
+                    <Sidebar 
+                        isSidebarOpen={isSidebarOpen} 
+                        handleToggleSidebar={handleToggleSidebar} 
+                    />
                 </div>
 
                 <div className='flex flex-col w-full'>
@@ -114,7 +125,7 @@ const Home = () => {
 
                     <section className='px-4 py-4'>
                         <div className='flex justify-between items-center mb-4'>
-                            <div className='w-[150px] md:w-[375px] flex items-center px-3 h-[43px] rounded-2xl bg-[#F4F4F5]'>
+                            <div className='w-[170px] md:w-[375px] flex items-center px-3 h-[43px] rounded-2xl bg-[#F4F4F5]'>
                                 <img src="search.svg" alt="" className='w-[18px] h-[18px]' />
                                 <input
                                     type="text"
@@ -130,9 +141,15 @@ const Home = () => {
                                     <h2 className='ml-2 text-[16px] font-medium text-[#737373] font-sm whitespace-nowrap'>Unlock Daily Treats</h2>
                                 </div>
 
-                                <div className='px-6 py-2 rounded-3xl bg-[#86EFAC] cursor-pointer hover:bg-[#6EE7A0]'>
-                                    <button className='text-[16px] font-medium cursor-pointer'>Sign In</button>
+                                <div className='px-2 rounded-[10px] md:px-6 flex justify-center items-center py-1 md:rounded-3xl bg-[#86EFAC] cursor-pointer hover:bg-[#6EE7A0]'>
+                                    <button className='text-[10px] md:text-[16px] font-medium cursor-pointer'>Sign In</button>
                                 </div>
+
+                                <button onClick={handleToggleSidebar} className='md:hidden mx-2 cursor-pointer'>
+                                    {isSidebarOpen ? <IoClose className='w-[24px] h-[24px]' /> : <IoMenu className='w-[24px] h-[24px]' />}
+                                </button>
+
+
                             </div>
                         </div>
 
@@ -386,6 +403,7 @@ const Home = () => {
                             </div>
 
                             <div className='md:flex justify-between items-center'>
+
                                 <div className='md:w-[344px] h-[216px] text-center rounded-2xl  border border-solid border-[rgba(129,129,129,0.078)] shadow-[0_1px_2px_0_rgba(0,0,0,0.051)] '>
                                     <div className='flex justify-center my-5 items-center'>
                                         <img src="Logo.svg" alt="" />
@@ -398,7 +416,7 @@ const Home = () => {
 
 
 
-                                <div className='md:w-[344px] h-[216px] rounded-2xl  border border-solid border-[rgba(129,129,129,0.078)] shadow-[0_1px_2px_0_rgba(0,0,0,0.051)] '>
+                                <div className='md:w-[344px] h-[216px] rounded-2xl my-5 md:my-0  border border-solid border-[rgba(129,129,129,0.078)] shadow-[0_1px_2px_0_rgba(0,0,0,0.051)] '>
                                     <div className='flex justify-between my-5 items-center mx-5'>
                                         <div>
                                             <h2 className='font-bold text-lg text-[#404040]'>Timeline</h2>
@@ -421,7 +439,7 @@ const Home = () => {
                                 </div>
 
 
-                                <div className='md:w-[344px] h-[216px]  rounded-2xl  border border-solid border-[rgba(129,129,129,0.078)] shadow-[0_1px_2px_0_rgba(0,0,0,0.051)] '>
+                                <div className='md:w-[344px] h-[216px]  rounded-2xl my-5 md:my-0 border border-solid border-[rgba(129,129,129,0.078)] shadow-[0_1px_2px_0_rgba(0,0,0,0.051)] '>
                                     <div className='my-10 md:mx-10 mx-5'>
                                         <h2 className='text-lg font-bold text-[#404040]'>How to perform this quest?</h2>
                                         <p className='text-[#737373] text-xs'>Watch a tutorial.</p>
